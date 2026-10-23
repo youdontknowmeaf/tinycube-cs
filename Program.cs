@@ -39,10 +39,7 @@ public static class Program {
 			Raylib.BeginMode3D(Player.Camera);
 				//example.Draw();
 				//Render.DrawBlock(0.0f, 0.0f, 0.0f, Color.Red);
-		                for(int x = 0; x < maxy; x++)
-		                        for(int y = 0; y < miny; y++)
-						for(int z = 0; z < minz; z++)
-							world[x, y, z].Draw();
+				OptimFuncs.DrawWorld();
 
 				Render.DrawOutline(0.0f, 0.0f, 0.0f, Color.DarkGray);
 				Raylib.DrawGrid(10, 1.0f);
