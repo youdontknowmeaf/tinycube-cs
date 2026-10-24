@@ -28,17 +28,15 @@ public class Block {
 
 	public void Init() {
 		pos += new Vector3(0.5f, 0.5f, 0.5f);
-		if (texture != NOTEXTURE) {
-                        Raylib.SetTextureFilter(Texture.map[texture], TextureFilter.Point);
-                        unsafe {
-                                cubemodel.Materials[0].Maps[(int)MaterialMapIndex.Diffuse].Texture = Texture.map[texture];
-                        }
-                }
-
+		if (texture != NOTEXTURE)
+			Raylib.SetTextureFilter(Texture.map[texture], TextureFilter.Point);
 	}
 
 	public void Draw() {
-		if (visible) {
+		if (visible && texture != NOTEXTURE) {
+			unsafe {
+				cubemodel.Materials[0].Maps[(int)MaterialMapIndex.Diffuse].Texture = Texture.map[texture];
+			}
 			Raylib.DrawModel(cubemodel, pos, 1.0f, Color.White);
 		}
 	}

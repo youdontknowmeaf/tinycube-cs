@@ -14,6 +14,7 @@ private static float targety = 0;
 private static float targetz = 0;
 private static Vector2 MouseDelta = Raylib.GetMouseDelta();
 public static Camera3D Camera; // Just for loop.
+private static float speed = 1.0f;
 
 	public static void Init() {
 		Camera = new Camera3D {
@@ -27,8 +28,18 @@ public static Camera3D Camera; // Just for loop.
 
 	public static void Update() {
 		MouseDelta = Raylib.GetMouseDelta();
-		Raylib.UpdateCamera(ref Camera, CameraMode.FirstPerson);
-		
+		Raylib.UpdateCamera(ref Camera, CameraMode.Free);
+		/*
+		speed = 1.0f * Raylib.GetFrameTime();	
+		if (Raylib.IsKeyDown(KeyboardKey.Space)) {
+			Camera.Position = new Vector3(Camera.Position.X, Camera.Position.Y + speed, Camera.Position.Z);
+			Camera.Target = new Vector3(Camera.Position.X, Camera.Position.Y + speed, Camera.Position.Z);
+		}
+		if (Raylib.IsKeyDown(KeyboardKey.LeftShift)) {
+			Camera.Position = new Vector3(Camera.Position.X, Camera.Position.Y - speed, Camera.Position.Z);
+			Camera.Target = new Vector3(Camera.Position.X, Camera.Position.Y - speed, Camera.Position.Z);
+		}
+	*/
 		//Camera.Position = new Vector3(posx, posy, posz);
 		//Camera.Target = new Vector3(targetx, targety, targetz);
 	}
