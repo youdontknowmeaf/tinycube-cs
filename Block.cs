@@ -8,7 +8,7 @@ public class Block {
     	private static float size = 1.0f;
     	private int texture;
 
-    	private bool visible;
+    	public bool visible;
 	private const int NOTEXTURE = 69;
 
 	private static Model cubemodel;

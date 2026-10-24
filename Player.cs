@@ -9,11 +9,11 @@ public static float posx = 0.0f;
 public static float posy = 10.0f;
 public static float posz = 10.0f;
 public static float FOV = 45.0f;
-public static float targetx = 0;
-public static float targety = 0;
-public static float targetz = 0;
-
-public static Camera3D Camera;
+private static float targetx = 0;
+private static float targety = 0;
+private static float targetz = 0;
+private static Vector2 MouseDelta = Raylib.GetMouseDelta();
+public static Camera3D Camera; // Just for loop.
 
 	public static void Init() {
 		Camera = new Camera3D {
@@ -26,8 +26,10 @@ public static Camera3D Camera;
 	}
 
 	public static void Update() {
+		MouseDelta = Raylib.GetMouseDelta();
+		Raylib.UpdateCamera(ref Camera, CameraMode.FirstPerson);
 		
-		Camera.Position = new Vector3(posx, posy, posz);
-		Camera.Target = new Vector3(targetx, targety, targetz);
+		//Camera.Position = new Vector3(posx, posy, posz);
+		//Camera.Target = new Vector3(targetx, targety, targetz);
 	}
 }

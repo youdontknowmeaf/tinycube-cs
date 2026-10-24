@@ -7,7 +7,7 @@ public static class Program {
 	public static void Main() {
 		
 		Raylib.InitWindow(1280, 720, "TinyCube");
-		Raylib.SetTargetFPS(60);
+		Raylib.SetTargetFPS(1024);
 
 		Texture.Init();
 		Block.InitDefaultCubeModel();
@@ -17,7 +17,7 @@ public static class Program {
 		int maxy = test;
 		int miny = test;
 		int minz = test;
-
+		/*
 		Block[,,] world = new Block[maxy, miny, minz];
 
 		for(int x = 0; x < maxy; x++)
@@ -26,20 +26,20 @@ public static class Program {
 					world[x, y, z] = new Block(new Vector3(x, y, z), 0);
 					world[x, y, z].Init();
 			}
-
+		*/
 		//Block example = new Block(new Vector3(0.0f, 0.0f, 0.0f), exampletxt);
-
+		OptimFuncs.InitWorld(test, test, test);
 		Player.Init();
 		//example.Init();
 
 		while (!Raylib.WindowShouldClose()) {
 			Raylib.BeginDrawing();
 			Raylib.ClearBackground(Color.RayWhite);
-
+			Player.Update();
 			Raylib.BeginMode3D(Player.Camera);
 				//example.Draw();
 				//Render.DrawBlock(0.0f, 0.0f, 0.0f, Color.Red);
-				OptimFuncs.DrawWorld();
+				OptimFuncs.DrawWorld(test, test, test);
 
 				Render.DrawOutline(0.0f, 0.0f, 0.0f, Color.DarkGray);
 				Raylib.DrawGrid(10, 1.0f);
