@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tinycube-cs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+62e71dbaecadd75680207059584a6e68670eb984")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6326fb199d9d272376c22dd7f94d63d97a7d59b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("tinycube-cs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tinycube-cs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
