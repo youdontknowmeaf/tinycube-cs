@@ -25,4 +25,5 @@ The engine works by wrapping Raylib's functions into helpers and adding things l
 - **Player** > W.I.P just RayLib's free camera movement
 - **Textures** > All textures are loaded on start in a array called map and checks their 'loaded' bool to true. (I plan to make the textures not mandatory)
 - **Cubes** > Cubes are models. One model is loaded on start and reused for each cube with a diffrent texture. Cubes hold a number telling them which texture they are. eg. if their number is 0 - they will use map[0] or if their number is 1 their texture will be map[1].
+
 That's about it for now, I want to add more functions like simple GUI interface, f3 debug menu (X, Y, Z, CurrentBlock, WorldSize). I also want to add the ability to edit the game's/engine's settings with a .yaml so creating games is easier + modding and user's customisation should be easier (no need to recompile). I try to make the engine as modular as possible so you can replace some files 'n' shit to kinda have modding support but I work on this in my free time so the progress goes like blood from nose lol.
