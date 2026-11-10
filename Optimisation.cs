@@ -3,20 +3,20 @@ using System.Numerics;
 using static System.Console;
 
 namespace tinycube;
-
+// I need to rename this class and file lol
 public static class OptimFuncs {
-	public static Block[,,] world = new Block[128, 128, 128];
+	public static Block[,,] world = new Block[64, 64, 64];
 	public static int[,,] WorldData = new int[128, 128, 128];
 
 	public static void InitWorld(int maxx, int maxy, int maxz) {
-		if (maxx > 100 && maxy > 100 && maxz > 100) {
-			WriteLine("WORLD SIZE TOO BIG!\nMax world size: 128x128x128");
-			return;	
+		if (maxx > 64 && maxy > 64 && maxz > 64) {
+			WriteLine("WORLD SIZE TOO BIG!\nMax world size: 64x64x64");
+			return;
 		}
                 for(int x = 0; x < maxx; x++)
                 for(int y = 0; y < maxy; y++)
                 for(int z = 0; z < maxz; z++) {
-			if (y % 2 == 0)
+			if (y > maxy -2) // a neat layer of grass indeed
                         	WorldData[x, y, z] = 0;
 			else
 				WorldData[x, y, z] = 1;
