@@ -42,8 +42,14 @@ public class Block {
 	}
 
 	public static void Unload() {
+		// NOTE: LoadModelFromMesh copies the mesh and deletes the original VAO,
+		// so only the model needs unloading (unloading mesh too = double free)
 		Raylib.UnloadModel(cubemodel);
-		Raylib.UnloadMesh(mesh);
 	}
 
+	public BoundingBox GetBoundingBox() {
+		float half = size / 2.0f;
+		return new BoundingBox(pos - new Vector3(half, half, half),
+					pos + new Vector3(half, half, half));
+}
 }

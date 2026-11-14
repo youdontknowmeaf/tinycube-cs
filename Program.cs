@@ -23,7 +23,7 @@ public static class Program {
 			Raylib.ClearBackground(Color.RayWhite);
 			Player.Update();
 			Raylib.BeginMode3D(Player.Camera);
-				OptimFuncs.DrawWorld(WORLD_SIZE, WORLD_SIZE, WORLD_SIZE);
+				OptimFuncs.DrawWorld(128, 128, 128);
 
 				Render.DrawOutline(0.0f, 0.0f, 0.0f, Color.DarkGray);
 				Raylib.DrawGrid(WORLD_SIZE, 1.0f);

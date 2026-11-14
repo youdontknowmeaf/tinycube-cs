@@ -5,7 +5,7 @@ using static System.Console;
 namespace tinycube;
 // I need to rename this class and file lol
 public static class OptimFuncs {
-	public static Block[,,] world = new Block[64, 64, 64];
+	public static Block?[,,] world = new Block[128, 128, 128];
 	public static int[,,] WorldData = new int[128, 128, 128];
 
 	public static void InitWorld(int maxx, int maxy, int maxz) {
@@ -13,6 +13,12 @@ public static class OptimFuncs {
 			WriteLine("WORLD SIZE TOO BIG!\nMax world size: 64x64x64");
 			return;
 		}
+		for(int x = 0; x < 128; x++)
+                for(int y = 0; y < 128; y++)
+                for(int z = 0; z < 128; z++) {
+                        WorldData[x, y, z] = 69;
+                }
+
                 for(int x = 0; x < maxx; x++)
                 for(int y = 0; y < maxy; y++)
                 for(int z = 0; z < maxz; z++) {
@@ -29,6 +35,7 @@ public static class OptimFuncs {
 		for(int x = 0; x < maxx; x++)
 		for(int y = 0; y < maxy; y++)
 		for(int z = 0; z < maxz; z++)
+		if (world[x, y, z] != null)
 			world[x, y, z].Draw();
 	}
 
@@ -41,6 +48,9 @@ public static class OptimFuncs {
 	}
 
 	public static void UpdateSingle(int ax, int ay, int az, int maxx, int maxy, int maxz) {
+	if (ax < 0 || ax >= 128 || ay < 0 || ay >= 128 || az < 0 || az >= 128) return;
+	if (WorldData[ax, ay, az] == 69) return; // empty cell, nothing to show
+
  	int left  = (ax - 1 >= 0) ? WorldData[ax - 1, ay, az] : 69;
  	int right = (ax + 1 < maxx) ? WorldData[ax + 1, ay, az] : 69;
  	int down  = (ay - 1 >= 0) ? WorldData[ax, ay - 1, az] : 69;
@@ -64,5 +74,14 @@ public static class OptimFuncs {
                 for(int y = 0; y < maxy; y++)
                 for(int z = 0; z < maxz; z++)
 			UpdateSingle(x, y, z, maxx, maxy, maxz);
+	}
+
+	public static void ScanNeighbours(int x, int y, int z, int maxx, int maxy, int maxz) {
+		UpdateSingle(x - 1, y, z, maxx, maxy, maxz);
+    		UpdateSingle(x + 1, y, z, maxx, maxy, maxz);
+    		UpdateSingle(x, y - 1, z, maxx, maxy, maxz);
+    		UpdateSingle(x, y + 1, z, maxx, maxy, maxz);
+    		UpdateSingle(x, y, z - 1, maxx, maxy, maxz);
+    		UpdateSingle(x, y, z + 1, maxx, maxy, maxz);
 	}
 }
